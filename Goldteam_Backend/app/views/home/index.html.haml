@@ -1,0 +1,6 @@
+%h1 HOME
+=link_to new_user_registration_path do
+  Sign up
+-if user_signed_in?
+  =link_to user_contacts_path(current_user) do
+    Contacts
