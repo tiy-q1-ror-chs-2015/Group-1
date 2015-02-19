@@ -1,6 +1,13 @@
 %h1 HOME
-=link_to new_user_registration_path do
-  Sign up
 -if user_signed_in?
   =link_to user_contacts_path(current_user) do
     Contacts
+  =link_to destroy_user_session_path, :method => :delete do
+    Sign Out
+-else
+  =link_to new_user_registration_path do
+    Sign up
+  %br
+  =link_to user_session_path do
+    Sign in
+  %br

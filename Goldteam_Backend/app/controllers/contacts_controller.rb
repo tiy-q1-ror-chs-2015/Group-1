@@ -36,6 +36,7 @@ class ContactsController < ApplicationController
         format.json { render json: @contact.errors.full_messages, status: 422 }
       end
     end
+  end
 private
   def set_contact
     @contact = Contact.find params[:id]
@@ -52,3 +53,4 @@ private
 
     )
   end
+end
