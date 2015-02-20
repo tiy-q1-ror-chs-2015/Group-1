@@ -27,7 +27,7 @@ templates.contact = [
   '<p><input type="text" name="editState" value = "<%= state %>"</p>',
   '<p><input type="text" name="editZip" value = "<%= zip %>"</p>',
   '<button type="submit">Submit Edit</button>',
-'</form>'
+'</form>',
 '</article>'
 
 ].join('');
@@ -58,7 +58,7 @@ templates.addContact = [
   '<input type="text" name="state" placeholder="State"</p>',
   '<p><label for="zip">Zip</label>',
   '<input type="text" name="zip" placeholder="Zip"</p>',
-  '<button type="submit">Create Contact</button>',
+  '<button id="createContact" type="submit">Create Contact</button>',
 '</form>'
 
 ].join('');
