@@ -25,7 +25,7 @@ module GoldteamBackend
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :put, :delete]
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
   end
