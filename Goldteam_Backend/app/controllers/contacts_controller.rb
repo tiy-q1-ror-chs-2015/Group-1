@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
     end
   end
   def create
-    @contact = Contact.new 
+    @contact = Contact.new contact_params
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
@@ -44,13 +44,18 @@ private
   def contact_params
     params.require(:contact).permit(
       :name,
-      :adress,
+      :street,
+      :street_2,
+      :city,
+      :state,
+      :zip,
       :email,
-      :gihub,
+      :github,
       :twitter,
       :number,
-      :photo
-
+      :photo,
+      :note,
+      :user_id
     )
   end
 end

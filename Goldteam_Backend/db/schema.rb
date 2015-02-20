@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150219200948) do
     t.string   "twitter",    limit: 255
     t.text     "photo",      limit: 65535
     t.string   "number",     limit: 255
+    t.text     "note",       limit: 65535
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

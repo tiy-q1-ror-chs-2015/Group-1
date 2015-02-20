@@ -12,6 +12,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :twitter
       t.text :photo
       t.string :number
+      t.text :note
       t.integer :user_id
       t.timestamps null: false
     end
