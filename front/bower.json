@@ -14,12 +14,14 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "assets/bower_components"
   ],
   "dependencies": {
     "jquery": "~2.1.3",
     "underscore": "~1.7.0",
     "backbone": "~1.1.2",
     "font-awesome": "~4.3.0"
-  }
+  },
+  "homepage": "https://github.com/brentoneill/Group-1"
 }
