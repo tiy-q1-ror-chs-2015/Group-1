@@ -1,5 +1,29 @@
 //VIEWS
 
+//
+var AuthView = Backbone.View.extend({
+  tagName: 'section',
+  template: _.template(templates.auth),
+  initialize: function(){
+    console.log('Authentication View Initialized');
+    this.render();
+  },
+  events: {
+    //login button events go here
+  },
+  render:function(){
+    console.log('rendering the user auth template');
+    //renders the auth page
+    var compiled = this.template({data: 'something'}); //data is not important. we are rendering static template
+    console.log(compiled);
+    $('.app-container').append(compiled);
+    return this;
+  }
+});
+
+
+
+
 //MODEL VIEW
 //Contact - single contact view
 ///Render, edit, delete a single contact
