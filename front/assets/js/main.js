@@ -20,4 +20,17 @@ $(document).ready(function(){
   });
 
 
+  $('.navigation-wrapper').on('click', '.ua', function(e){
+    e.preventDefault();
+    console.log('ua link clicked');
+    App.router.navigate('userAuth', true);
+  });
+
+  $('.navigation-wrapper').on('click', '.logo', function(e){
+    e.preventDefault();
+    console.log('home link clicked');
+    App.router.navigate('home',true);
+  });
+
+
 });

@@ -65,3 +65,11 @@ templates.addContact = [
 '</form>'
 
 ].join('');
+
+templates.auth = [
+  '<div class="userauth">',
+    '<h2>User Authentication View</h2>',
+    '<input type="text" name="login" placeholder="Login">',
+    '<input type="text" name="pass" placeholder="Password">',
+  '</div>'
+].join('');

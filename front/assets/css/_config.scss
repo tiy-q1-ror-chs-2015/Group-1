@@ -1,5 +1,6 @@
-body{
-  overflow-x:hidden;
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
 }
 * {
   box-sizing:border-box;
@@ -20,9 +21,6 @@ section{
   margin-bottom:40px;
 }
 
-.allcontacts-view {
-  text-align:center;
-}
 
 .allcontacts-view article{
   margin-bottom:30px;
@@ -79,6 +77,11 @@ section{
   position:absolute;
   border-radius:5px;
   @include transition(all .5s ease-in-out);
+}
+
+.userauth {
+  width:50%;
+  margin:0 auto;
 }
 
 .off-right{
