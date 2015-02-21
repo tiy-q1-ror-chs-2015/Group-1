@@ -5,12 +5,21 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
   },
   routes: {
-    '': 'home'
+    '': 'home',
+    'searchResults': 'searchResultsRoute'
   },
   home: function(){
-    this.loadView(new AddContactView());
+    var contactsCollection = new ContactsCollection();
+    contactsCollection.fetch().then(function(){
+      var contactsView = new ContactsView({collection: contactsCollection});
+    });
+    var addContacts = new AddContactView();
   },
-  loadView:function(view){
-    this.view = view;
+  searchResultsRoute: function(){
+    //
+    //var searchResults = new SearchResultsView();
   }
+  // loadView:function(view){
+  //   this.view = view;
+  // }
 });

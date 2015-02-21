@@ -21,38 +21,35 @@ var ContactView = Backbone.View.extend({
 
   },
   showEdit: function(e){
-    console.log('showing the view form');
     e.preventDefault();
-
-    this.$('#editContact').toggleClass('show');
+    this.$('.editForm-wrapper').toggleClass('show');
   },
   submitEdit: function(e){
     console.log('edit submitted');
     e.preventDefault();
-    var myEl = this.$el.find('#editContact');
+    var myEl = this.$el.find('#editForm');
 
-    // var editedContact = {
-    //   name: ,
-    //   street: ,
-    //   street_2: ,
-    //   city: ,
-    //   state: ,
-    //   zip: ,
-    //   email: ,
-    //   github: ,
-    //   twitter: ,
-    //   photo: ,
-    //   number: ,
-    //   user_id: ,
-    // };
-
+    var editedContact = {
+      name:     myEl.find('input[name="name"]').val(),
+      street:   myEl.find('input[name="street"]').val(),
+      street_2: myEl.find('input[name="street_2"]').val(),
+      city:     myEl.find('input[name="city"]').val(),
+      state:    myEl.find('input[name="state"]').val() ,
+      zip:      myEl.find('input[name="zip"]').val(),
+      email:    myEl.find('input[name="email"]').val(),
+      github:   myEl.find('input[name="github"]').val(),
+      twitter:  myEl.find('input[name="twitter"]').val(),
+      photo:    myEl.find('input[name="photo"]').val(),
+      number:   myEl.find('input[name="number"]').val(),
+    };
     this.model.set(editedContact);
     this.model.save();
     this.render();
+    this.$('.editForm-wrapper').toggleClass('show');
   },
   render:function(){
     var compiled = this.template(this.model.attributes);
-    this.$el.html(markup)
+    this.$el.html(compiled)
     return this;
   },
   deleteContact:function(){
@@ -66,12 +63,14 @@ var ContactView = Backbone.View.extend({
 //Add Contact
 ////Submit the contact, render
 var AddContactView = Backbone.View.extend({
-  tagName: 'article',
+  tagName: 'section',
+  className: 'addcontact-view',
   template: _.template(templates.addContact),
   initialize:function(){
     console.log('add contact view initialized');
     this.render();
-    $('.addcontact-view').append(this.el);
+    $('.app-container').append(this.el);
+    $('section.addcontact-view').addClass('off-right');
   },
   events: {
     'submit #addContactForm' : 'submitContact'
@@ -98,9 +97,10 @@ var AddContactView = Backbone.View.extend({
       photo:    myEl.find('input[name="photo"]').val(),
       number:   myEl.find('input[name="number"]').val(),
     };
-    console.log(newContact);
     this.model = new Contact(newContact);
     this.model.save();
+    this.collection.add(newContact);
+    this.$el.add();
   }
 });
 
@@ -109,10 +109,11 @@ var AddContactView = Backbone.View.extend({
 ////Render -- add one contact, add all contacts
 var ContactsView = Backbone.View.extend({
   tagName: 'section',
+  className: 'allcontacts-view',
   initialize: function(){
     console.log('contacts view init');
     this.render();
-    $('.contacts-container').append(this.el);
+    $('.app-container').append(this.el);
   },
   events: {
     "click #createContact": "createContact"
@@ -123,7 +124,7 @@ var ContactsView = Backbone.View.extend({
   },
   addOne: function(contactModel){
     var contactView = new ContactView({model: contactModel});
-    this.$el.append(ContactView.render().el);
+    this.$el.append(contactView.render().el);
   },
   addAll: function(){
     _.each(this.collection.models, this.addOne, this);
