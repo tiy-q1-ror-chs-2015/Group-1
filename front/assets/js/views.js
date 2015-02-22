@@ -1,25 +1,25 @@
 //VIEWS
 
-//
-var AuthView = Backbone.View.extend({
-  tagName: 'section',
-  template: _.template(templates.auth),
-  initialize: function(){
-    console.log('Authentication View Initialized');
-    this.render();
-  },
-  events: {
-    //login button events go here
-  },
-  render:function(){
-    console.log('rendering the user auth template');
-    //renders the auth page
-    var compiled = this.template({data: 'something'}); //data is not important. we are rendering static template
-    console.log(compiled);
-    $('.app-container').append(compiled);
-    return this;
-  }
-});
+// User Authentication View
+// var AuthView = Backbone.View.extend({
+//   tagName: 'section',
+//   template: _.template(templates.auth),
+//   initialize: function(){
+//     console.log('Authentication View Initialized');
+//     this.render();
+//   },
+//   events: {
+//     //login button events go here
+//   },
+//   render:function(){
+//     console.log('rendering the user auth template');
+//     //renders the auth page
+//     var compiled = this.template({data: 'something'}); //data is not important. we are rendering static template
+//     console.log(compiled);
+//     $('.app-container').append(compiled);
+//     return this;
+//   }
+// });
 
 
 
@@ -73,7 +73,7 @@ var ContactView = Backbone.View.extend({
   },
   render:function(){
     var compiled = this.template(this.model.attributes);
-    this.$el.html(compiled)
+    this.$el.html(compiled);
     return this;
   },
   deleteContact:function(){
@@ -123,8 +123,7 @@ var AddContactView = Backbone.View.extend({
     };
     this.model = new Contact(newContact);
     this.model.save();
-    this.collection.add(newContact);
-    this.$el.add();
+    this.model.renderAddedContact();
   }
 });
 
@@ -139,9 +138,6 @@ var ContactsView = Backbone.View.extend({
     this.render();
     $('.app-container').append(this.el);
   },
-  events: {
-    "click #createContact": "createContact"
-  },
   render: function(){
     this.addAll();
     return this;
@@ -152,5 +148,5 @@ var ContactsView = Backbone.View.extend({
   },
   addAll: function(){
     _.each(this.collection.models, this.addOne, this);
-  }
+  },
 });
