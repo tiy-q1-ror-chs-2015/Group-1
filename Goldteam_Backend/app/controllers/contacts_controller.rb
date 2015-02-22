@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   def index
+    set_ip
     @contacts = Contact.all
     respond_to do |format|
       format.json {render  json: @contacts.to_json}
@@ -14,8 +15,8 @@ class ContactsController < ApplicationController
     end
   end
   def create
-    @contact = Contact.new contact_params
-    @contact.ip = request.ip
+    set_ip
+    @contact = Ip.contacts.create contact_params
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
@@ -27,6 +28,7 @@ class ContactsController < ApplicationController
     end
   end
   def update
+    set_ip
     set_contact
     if @contact.update_attributes contact_params
       respond_to do |format|
@@ -39,6 +41,9 @@ class ContactsController < ApplicationController
     end
   end
 private
+  def set_ip
+  @ip = ip.find params[:ip_id]
+  end
   def set_contact
     @contact = Contact.find params[:id]
   end
@@ -56,7 +61,7 @@ private
       :number,
       :photo,
       :note,
-      :ip
+      :ip_id
     )
   end
 end
