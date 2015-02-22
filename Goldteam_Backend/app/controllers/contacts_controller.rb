@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
   end
   def create
     @contact = Contact.new contact_params
+    @contact.ip = request.ip
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
@@ -55,7 +56,7 @@ private
       :number,
       :photo,
       :note,
-      :user_id
+      :ip
     )
   end
 end
