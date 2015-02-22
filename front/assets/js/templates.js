@@ -35,6 +35,43 @@ templates.contact = [
 
 ].join('');
 
+templates.addedContact = [
+  // '<img src = <%= photo %> alt="">',
+  '<article>',
+    '<h3><%= name %></h3>',
+    '<p><%= number %></p>',
+    '<p><%= email %></p>',
+    '<p><%= twitter %></p>',
+    '<p><%= github %></p>',
+    '<p><%= street %> ',
+    '<%= street_2 %></p>',
+    '<p><%= city %>, ',
+    '<%= state %> ',
+    '<%= zip %></p>',
+    '<div class="contact-but-wrapper">',
+      '<button class="deleteContact">Delete</button>  <button class="showEdit">Edit</button>',
+    '<div>',
+    '<div class="editForm-wrapper">',
+      '<h2>Edit information for <i><%= name %></i></h2>',
+      '<form id="editForm" action="">',
+        '<input type="text" name="editPhoto" value ="<%= photo %>">',
+        '<h3><input type="text" name="name" value = "<%= name %>"</h3>',
+        '<p><input type="text" name="number" value = "<%= number %>"</p>',
+        '<p><input type="text" name="email" value = "<%= email %>"</p>',
+        '<p><input type="text" name="twitter" value = "<%= twitter %>"</p>',
+        '<p><input type="text" name="github" value = "<%= github %>"</p>',
+        '<p><input type="text" name="street" value = "<%= street %>"</p>',
+        '<p><input type="text" name="street_2" value = "<%= street_2 %>"</p>',
+        '<p><input type="text" name="city" value = "<%= city %>"</p>',
+        '<p><input type="text" name="state" value = "<%= state %>"</p>',
+        '<p><input type="text" name="zip" value = "<%= zip %>"</p>',
+        '<button type="submit" class="submitEdit">Submit Edit</button>',
+      '</form>',
+    '</div>',
+  '</article>'
+
+].join('');
+
 
 templates.addContact = [
 

@@ -5,6 +5,7 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
   },
   routes: {
+    '' : 'home',
     'home': 'home',
     'searchResults': 'searchResultsRoute',
     'userAuth': 'userAuthRoute'
@@ -19,11 +20,11 @@ var AppRouter = Backbone.Router.extend({
   searchResultsRoute: function(){
     //var searchResults = new SearchResultsView();
   },
-  userAuthRoute:function(){
-    var userAuth = new AuthView();
-    this.loadView(userAuth);
-    console.log('authentication view route running');
-  },
+  // userAuthRoute:function(){
+  //   var userAuth = new AuthView();
+  //   this.loadView(userAuth);
+  //   console.log('authentication view route running');
+  // },
   loadView:function(view){
     this.view && this.view.remove();
     this.view = view;
