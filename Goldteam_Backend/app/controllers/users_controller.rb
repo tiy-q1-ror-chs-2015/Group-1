@@ -1,4 +1,5 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
+  before_filter :set_default_response_format
   def index
     @users = User.all
     respond_to do |format|
@@ -38,6 +39,9 @@ class UserController < ApplicationController
     end
   end
 private
+  def set_default_response_format
+    request.format = :json
+  end
   def set_user
     @user = User.find params[:id]
   end
