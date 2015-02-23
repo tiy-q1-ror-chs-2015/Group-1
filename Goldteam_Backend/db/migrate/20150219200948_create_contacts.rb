@@ -13,7 +13,7 @@ class CreateContacts < ActiveRecord::Migration
       t.text :photo
       t.string :number
       t.text :note
-      t.text :ip
+      t.text :user_id
       t.timestamps null: false
     end
   end
