@@ -4,9 +4,11 @@
 @import 'base/base';         //Bitters style scaffold -- settings in
 @import 'config';            //All variables, custom mixins, and extend classes
 @import 'typography';        //Handles font stuff
+@import 'flipper';
 
 //UI Components
 @import 'menu';
+@import 'side-menu'
 
 //VIEWS
 

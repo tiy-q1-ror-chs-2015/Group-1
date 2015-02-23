@@ -8,29 +8,20 @@ $(document).ready(function(){
   App.router = new AppRouter();
   Backbone.history.start();
 
-  $('.app-container').on('click', '.addcontact-but', function(e){
-    e.preventDefault();
-    console.log('add button clicked');
-    $('section.addcontact-view').toggleClass('off-right');
-    $('.addcontact-but i').toggleClass('fa-plus');
-    $('div.addcontact-button-wrapper').toggleClass('spin');
-    $('div.addcontact-button-wrapper').toggleClass('flush');
-    $('.addcontact-but i').toggleClass('fa-minus');
-
-  });
-
-
-  $('.navigation-wrapper').on('click', '.ua', function(e){
-    e.preventDefault();
-    console.log('ua link clicked');
-    App.router.navigate('userAuth', true);
-  });
-
+  //MOVING THROUGH ROUTES
   $('.navigation-wrapper').on('click', '.logo', function(e){
     e.preventDefault();
-    console.log('home link clicked');
-    App.router.navigate('home',true);
+    App.router.navigate('splash',true);
+  });
+  $('.navigation-wrapper').on('click', '.home', function(e){
+    e.preventDefault();
+    App.router.navigate('userHome',true);
   });
 
 
+  //LOGOUT
+  $('.navigation-wrapper').on('click', '#logout', function(e){
+    App.router.navigate('splash', true);
+    localStorage.removeItem("user");
+  })
 });

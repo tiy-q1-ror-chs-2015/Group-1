@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
     if @user.contacts.update_attributes contact_params
       respond_to do |format|
         format.json { render json: @contact.to_json }
-      end 
+      end
     else
       respond_to do |format|
         format.json { render json: @contact.errors.full_messages, status: 422 }
