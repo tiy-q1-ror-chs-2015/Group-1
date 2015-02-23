@@ -1,10 +1,26 @@
 class UsersController < ApplicationController
-  before_filter :set_default_response_format
   def index
     @users = User.all
     respond_to do |format|
       format.json {render  json: @users.to_json}
       format.html
+    end
+  end
+
+  def add_user
+    User.create user_params
+    respond_to do |format|
+      format.json { render nothing: true}
+      format.html { render nothing: true}
+    end
+  end
+
+  def show
+    @user = User.where( username: params[:id] )
+    p @user
+    p @params
+    respond_to do |format|
+      format.json {render json: @user.to_json}
     end
   end
   def destroy
@@ -15,7 +31,7 @@ class UsersController < ApplicationController
     end
   end
   def create
-    @user = User.new user_params
+    @user = User.create user_params
     if @user.save
       respond_to do |format|
         format.json {render json: @user.to_json}
@@ -31,7 +47,7 @@ class UsersController < ApplicationController
     if @user.update_attributes user_params
       respond_to do |format|
         format.json { render json: @user.to_json }
-      end 
+      end
     else
       respond_to do |format|
         format.json { render json: @user.errors.full_messages, status: 422 }
@@ -39,14 +55,11 @@ class UsersController < ApplicationController
     end
   end
 private
-  def set_default_response_format
-    request.format = :json
-  end
   def set_user
     @user = User.find params[:id]
   end
   def user_params
-    params.require(:user).permit(
+    params.permit(
       :username
     )
   end

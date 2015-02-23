@@ -89,15 +89,12 @@ var ContactView = Backbone.View.extend({
   },
   showEdit: function(e){
     e.preventDefault();
-    console.log('show edit form');
     // this.$('.editForm-wrapper').toggleClass('show');
     this.$el.find('.flipper').toggleClass('flipped');
   },
   submitEdit: function(e){
-    console.log('edit submitted');
     e.preventDefault();
     var myEl = this.$el.find('#editForm');
-
     var editedContact = {
       name:     myEl.find('input[name="name"]').val(),
       street:   myEl.find('input[name="street"]').val(),
@@ -111,13 +108,15 @@ var ContactView = Backbone.View.extend({
       photo:    myEl.find('input[name="photo"]').val(),
       number:   myEl.find('input[name="number"]').val(),
       note: myEl.find('textarea[name="note"]').val(),
-      ip: String(myip)
     };
     this.model.set(editedContact);
     this.model.save();
     this.$el.find('.flipper').removeClass('flipped');
-    this.render();
-  },
+    var self = this;
+    setTimeout(function() {
+          // Do something after 1 seconds
+          self.render();
+    }, 800);  },
   render:function(){
     var compiled = this.template(this.model.attributes);
     this.$el.html(compiled);
@@ -190,7 +189,6 @@ var ContactsView = Backbone.View.extend({
       photo:    myEl.find('input[name="photo"]').val(),
       number:   myEl.find('input[name="number"]').val(),
       note: myEl.find('textarea[name="note"]').val(),
-      ip: String(myip)
     };
     myEl.find('input').val("");
     $('.js-menu,.js-menu-screen').toggleClass('is-visible');
@@ -226,21 +224,38 @@ var SplashView = Backbone.View.extend({
   },
   login: function(e){
     e.preventDefault();
-    var username = {
+    var user = {
       username: this.$el.find('input').val()
     }
-    console.log(username);
-    localStorage.user = JSON.stringify(username);
+    localStorage.user = JSON.stringify(user);
     if(username=""){
       alert('you must enter a username to continue');
     }
     else{
       $.ajax({
         type:'POST',
-        data:username,
+        data:user,
         url: 'http://localhost:9000/users',
         success:function(){
           console.log('success!');
+          $.ajax({
+            type:'GET',
+            url: 'http://localhost:9000/users/' + user.username,
+            success:function(data) {
+              console.log(data);
+              var userObj = data;
+              console.log(userObj);
+              user = {
+                id: data[0].id,
+                username: data[0].username
+              }
+              localStorage.user = JSON.stringify(user);
+              console.log(localStorage.user);
+            },
+            error:function(err){
+              console.log(err);
+            }
+          });
         },
         error:function(err){
           console.log(err);

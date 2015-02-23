@@ -21,7 +21,8 @@ $(document).ready(function(){
 
   //LOGOUT
   $('.navigation-wrapper').on('click', '#logout', function(e){
-    App.router.navigate('splash', true);
+    console.log('user logged out');
     localStorage.removeItem("user");
+    App.router.navigate('splash', true);
   })
 });
