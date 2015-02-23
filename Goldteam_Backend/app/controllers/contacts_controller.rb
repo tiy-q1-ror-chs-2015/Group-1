@@ -16,7 +16,8 @@ class ContactsController < ApplicationController
     end
   end
   def create
-    @contact = user.contacts.create contact_params
+    set_user
+    @contact = @user.contacts.create contact_params
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
