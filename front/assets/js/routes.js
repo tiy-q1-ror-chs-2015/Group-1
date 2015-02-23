@@ -1,6 +1,3 @@
-//ROUTES
-///LogIN
-////home (all contacts), add contact, edit contact
 var AppRouter = Backbone.Router.extend({
   initialize: function() {
   },
@@ -35,7 +32,6 @@ var AppRouter = Backbone.Router.extend({
     self.loadView(splashView);
   },
   loadView:function(view){
-    console.log('loadView Called');
     this.view && this.view.remove();
     this.view = view;
   }

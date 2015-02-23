@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   def index
+    set_user
     @contacts = Contact.all
     respond_to do |format|
       format.json {render  json: @contacts.to_json}
@@ -7,6 +8,7 @@ class ContactsController < ApplicationController
     end
   end
   def destroy
+    set_user
     set_contact
     @contact.destroy
     respond_to do |format|
@@ -14,7 +16,8 @@ class ContactsController < ApplicationController
     end
   end
   def create
-    @contact = Contact.new contact_params
+    set_user
+    @contact = @user.contacts.create contact_params
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
@@ -27,7 +30,7 @@ class ContactsController < ApplicationController
   end
   def update
     set_contact
-    if @contact.update_attributes contact_params
+    if @user.contacts.update_attributes contact_params
       respond_to do |format|
         format.json { render json: @contact.to_json }
       end
@@ -40,6 +43,9 @@ class ContactsController < ApplicationController
 private
   def set_contact
     @contact = Contact.find params[:id]
+  end
+  def set_user
+    @user = User.find params[:user_id]
   end
   def contact_params
     params.require(:contact).permit(
@@ -55,7 +61,7 @@ private
       :number,
       :photo,
       :note,
-      :ip
+      :user_id
     )
   end
 end
