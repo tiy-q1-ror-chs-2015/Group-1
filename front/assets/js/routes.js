@@ -26,10 +26,15 @@ var AppRouter = Backbone.Router.extend({
   //   console.log('authentication view route running');
   // },
   splashRoute:function(){
-    var self = this;
-    var splashView = new SplashView;
-    $('div.background-image').css('display', 'block');
-    self.loadView(splashView);
+    if(localStorage.user){
+      App.router.navigate('userHomeRoute', true);
+    }
+    else {
+      var self = this;
+      var splashView = new SplashView;
+      $('div.background-image').css('display', 'block');
+      self.loadView(splashView);
+    }
   },
   loadView:function(view){
     this.view && this.view.remove();
