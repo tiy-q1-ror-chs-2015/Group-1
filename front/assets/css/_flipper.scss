@@ -23,17 +23,15 @@
 /* hide back of pane during swap */
 .front, .back {
   backface-visibility: hidden;
-  border-radius:10px;
   position: absolute;
   top: 0;
   left: 0;
   background-color:white;
-  border:thin solid rgba(50,50,50, .5);
+  border:thin solid $blue;
   padding:20px;
-
-  -webkit-box-shadow: 5px 5px 0px 0px rgba(50, 50, 50, 0.25);
-  -moz-box-shadow:    5px 5px 0px 0px rgba(50, 50, 50, 0.25);
-  box-shadow:         5px 5px 0px 0px rgba(50, 50, 50, 0.25);
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(75, 125, 202, 0.25);
+  -moz-box-shadow:    5px 5px 0px 0px rgba(75, 125, 202, 0.25);
+  box-shadow:         5px 5px 0px 0px rgba(75, 125, 202, 0.25);
 
 }
 

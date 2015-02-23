@@ -226,22 +226,21 @@ var SplashView = Backbone.View.extend({
   },
   login: function(e){
     e.preventDefault();
-    var username = this.$el.find('input').val();
+    var username = {
+      username: this.$el.find('input').val()
+    }
+    console.log(username);
+    localStorage.user = JSON.stringify(username);
     if(username=""){
       alert('you must enter a username to continue');
     }
     else{
-      localStorage.user = username;
-      var newUser = localStorage.getItem('user');
-      newUser = $.parseJSON(newUser);
-      console.log(newUser);
       $.ajax({
         type:'POST',
-        data:newUser,
+        data:username,
         url: 'http://localhost:9000/users',
         success:function(){
-          console.log('success');
-
+          console.log('success!');
         },
         error:function(err){
           console.log(err);
