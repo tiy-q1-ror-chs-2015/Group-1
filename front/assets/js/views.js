@@ -89,15 +89,12 @@ var ContactView = Backbone.View.extend({
   },
   showEdit: function(e){
     e.preventDefault();
-    console.log('show edit form');
     // this.$('.editForm-wrapper').toggleClass('show');
     this.$el.find('.flipper').toggleClass('flipped');
   },
   submitEdit: function(e){
-    console.log('edit submitted');
     e.preventDefault();
     var myEl = this.$el.find('#editForm');
-
     var editedContact = {
       name:     myEl.find('input[name="name"]').val(),
       street:   myEl.find('input[name="street"]').val(),
@@ -115,8 +112,11 @@ var ContactView = Backbone.View.extend({
     this.model.set(editedContact);
     this.model.save();
     this.$el.find('.flipper').removeClass('flipped');
-    this.render();
-  },
+    var self = this;
+    setTimeout(function() {
+          // Do something after 1 seconds
+          self.render();
+    }, 800);  },
   render:function(){
     var compiled = this.template(this.model.attributes);
     this.$el.html(compiled);

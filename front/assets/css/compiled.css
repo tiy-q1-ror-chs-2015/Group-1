@@ -705,6 +705,12 @@ section {
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; }
 
+.js-menu h3 {
+  font-size: 1.5em;
+  text-align: center; }
+.js-menu .note {
+  width: 80%; }
+
 .splash-view .container {
   width: 50%;
   margin: 0 auto;
@@ -737,6 +743,12 @@ section {
     font-weight: 600; }
     .splash-view .container a:hover {
       background-color: #6f99d5; }
+
+.note {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-weight: bold; }
 
 .userauth {
   width: 50%;
