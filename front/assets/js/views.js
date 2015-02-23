@@ -232,6 +232,21 @@ var SplashView = Backbone.View.extend({
     }
     else{
       localStorage.user = username;
+      var newUser = localStorage.getItem('user');
+      newUser = $.parseJSON(newUser);
+      console.log(newUser);
+      $.ajax({
+        type:'POST',
+        data:newUser,
+        url: 'http://localhost:9000/users',
+        success:function(){
+          console.log('success');
+
+        },
+        error:function(err){
+          console.log(err);
+        }
+      });
       App.router.navigate('userHome',true);
     }
   }
