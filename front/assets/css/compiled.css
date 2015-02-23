@@ -605,6 +605,9 @@ section {
   position: relative; }
   .allcontacts-view article:last-child {
     margin-right: 0; }
+  .allcontacts-view article i {
+    margin-right: 8px;
+    color: #477DCA; }
   .allcontacts-view article span {
     float: right; }
     .allcontacts-view article span i.fa {
@@ -707,7 +710,7 @@ section {
   margin: 0 auto;
   margin-top: 200px;
   padding: 40px;
-  border: thin solid #4d4d4d;
+  border: 3px solid #477DCA;
   border-radius: 3px;
   background-color: white;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(50, 50, 50, 0.5);
@@ -774,7 +777,8 @@ section {
   top: 0;
   left: 0;
   background-color: white;
-  border: thin solid #477DCA;
+  border: 3px solid #477DCA;
+  border-radius: 3px;
   padding: 20px;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(75, 125, 202, 0.25);
   -moz-box-shadow: 5px 5px 0px 0px rgba(75, 125, 202, 0.25);

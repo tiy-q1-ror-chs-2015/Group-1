@@ -111,7 +111,6 @@ var ContactView = Backbone.View.extend({
       photo:    myEl.find('input[name="photo"]').val(),
       number:   myEl.find('input[name="number"]').val(),
       note: myEl.find('textarea[name="note"]').val(),
-      ip: String(myip)
     };
     this.model.set(editedContact);
     this.model.save();
@@ -190,7 +189,6 @@ var ContactsView = Backbone.View.extend({
       photo:    myEl.find('input[name="photo"]').val(),
       number:   myEl.find('input[name="number"]').val(),
       note: myEl.find('textarea[name="note"]').val(),
-      ip: String(myip)
     };
     myEl.find('input').val("");
     $('.js-menu,.js-menu-screen').toggleClass('is-visible');
@@ -226,21 +224,38 @@ var SplashView = Backbone.View.extend({
   },
   login: function(e){
     e.preventDefault();
-    var username = {
+    var user = {
       username: this.$el.find('input').val()
     }
-    console.log(username);
-    localStorage.user = JSON.stringify(username);
+    localStorage.user = JSON.stringify(user);
     if(username=""){
       alert('you must enter a username to continue');
     }
     else{
       $.ajax({
         type:'POST',
-        data:username,
+        data:user,
         url: 'http://localhost:9000/users',
         success:function(){
           console.log('success!');
+          $.ajax({
+            type:'GET',
+            url: 'http://localhost:9000/users/' + user.username,
+            success:function(data) {
+              console.log(data);
+              var userObj = data;
+              console.log(userObj);
+              user = {
+                id: data[0].id,
+                username: data[0].username
+              }
+              localStorage.user = JSON.stringify(user);
+              console.log(localStorage.user);
+            },
+            error:function(err){
+              console.log(err);
+            }
+          });
         },
         error:function(err){
           console.log(err);

@@ -7,6 +7,10 @@ class ContactsController < ApplicationController
       format.html
     end
   end
+  def new
+    p params
+  end
+
   def destroy
     set_user
     set_contact
@@ -29,8 +33,9 @@ class ContactsController < ApplicationController
     end
   end
   def update
+    set_user
     set_contact
-    if @user.contacts.update_attributes contact_params
+    if @contact.update_attributes contact_params
       respond_to do |format|
         format.json { render json: @contact.to_json }
       end

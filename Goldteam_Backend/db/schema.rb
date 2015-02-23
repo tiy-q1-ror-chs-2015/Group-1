@@ -26,13 +26,7 @@ ActiveRecord::Schema.define(version: 20150223011347) do
     t.text     "photo",      limit: 65535
     t.string   "number",     limit: 255
     t.text     "note",       limit: 65535
-    t.text     "ip_id",      limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "ips", force: :cascade do |t|
-    t.text     "ip_address", limit: 65535
+    t.text     "user_id",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

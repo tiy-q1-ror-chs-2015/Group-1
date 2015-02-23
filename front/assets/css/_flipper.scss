@@ -27,7 +27,8 @@
   top: 0;
   left: 0;
   background-color:white;
-  border:thin solid $blue;
+  border:3px solid $blue;
+  border-radius:3px;
   padding:20px;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(75, 125, 202, 0.25);
   -moz-box-shadow:    5px 5px 0px 0px rgba(75, 125, 202, 0.25);

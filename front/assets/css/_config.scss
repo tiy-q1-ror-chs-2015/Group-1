@@ -54,6 +54,10 @@ section{
   position:relative;
   .contact-but-wrapper {
   }
+  i {
+    margin-right:8px;
+    color:$blue;
+  }
   span{
     float:right;
     i.fa {
@@ -179,7 +183,7 @@ section{
   margin:0 auto;
   margin-top:200px;
   padding:40px;
-  border:thin solid lighten(black, 30%);
+  border:3px solid $blue;
   border-radius:3px;
   background-color:white;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(50, 50, 50, 0.50);
