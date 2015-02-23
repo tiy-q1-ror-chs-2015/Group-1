@@ -5,6 +5,27 @@ html, body {
 * {
   box-sizing:border-box;
 }
+body {
+}
+
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url('../crowd_1_1024.png');
+  background-size:cover;
+  width: 2000px;
+  height: 1200px;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
 
 $black: #333;
 $grey: rgba(255, 255, 255, 0.7);
@@ -23,22 +44,96 @@ section{
 
 
 .allcontacts-view article{
+  z-index:0;
   margin-bottom:30px;
   padding:10px;
-  border:thin solid black;
   text-align:left;
   min-height:400px;
-  @include span-columns(3);
+  @include span-columns(4);
   margin-right:1.5%;
+  position:relative;
   .contact-but-wrapper {
+  }
+  span{
+    float:right;
+    i.fa {
+      display:none;
+      margin-right:8px;
+      opacity:.5;
+      transition: all .5s ease;
+      &:last-child{
+        margin:0;
+      }
+      &:hover {
+        opacity:1;
+        transform: scale(1.4);
+      }
+    }
+    .fa-pencil {
+      color:$blue;
+    }
+    .fa-close {
+      color:darken(red, 10%);
+    }
+  }
+  h3:hover > span i.fa {
+    display:inline-block;
   }
   &:last-child{
     margin:0;
   }
+  a.submitEdit {
+    background-color:$blue;
+    color:white;
+    border-radius:3px;
+    padding:8px;
+    float:right;
+    font-size:1em;
+    font-weight:600;
+    &:hover{
+      background-color:darken($blue, 10%);
+    }
+  }
+  h3 {
+    vertical-align:middle;
+    cursor:pointer;
+  }
+  p {
+    margin-bottom:4px;
+  }
+  input {
+    margin-bottom:0px;
+  }
+  input[name="twitter"] {
+    margin-right:10%;
+  }
+
+  input[name="city"]{
+    margin-right:2%;
+  }
+
+  input[name="zip"],
+  input[name="city"]{
+    display:inline-block;
+    width:32%;
+  }
+  input[name="state"]{
+    width:32%;
+    display:inline-block;
+    margin-right:2%;
+  }
+
+  input[name="twitter"],
+  input[name="github"] {
+    width:45%;
+    display:inline-block;
+  }
+  textarea {
+    display:inline-block;
+  }
 }
 
 .editForm-wrapper{
-  display:none;
   margin-top:20px;
 }
 
@@ -48,7 +143,7 @@ section{
 
 .addcontact-button-wrapper{
   top:100px;
-  right:40px;
+  left:40px;
   position:fixed;
   background-color:$black;
   border-radius:5px;
@@ -79,13 +174,50 @@ section{
   @include transition(all .5s ease-in-out);
 }
 
+.splash-view .container {
+  width:50%;
+  margin:0 auto;
+  margin-top:200px;
+  padding:40px;
+  border:thin solid lighten(black, 30%);
+  border-radius:5px;
+  background-color:white;
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(50, 50, 50, 0.50);
+  -moz-box-shadow:    5px 5px 0px 0px rgba(50, 50, 50, 0.50);
+  box-shadow:         5px 5px 0px 0px rgba(50, 50, 50, 0.50);
+  h2 {
+    text-align:center;
+    font-size:1.5em;
+  }
+  h5 {
+    color:lighten(black, 40%);
+  }
+  input{
+    display:inline-block;
+    margin-right:10px;
+    border-radius:3px;
+    height:40px;
+    width:80%;
+  }
+  a{
+    background-color:$blue;
+    color:white;
+    border-radius:3px;
+    padding:8px;
+    float:right;
+    font-size:1em;
+    font-weight:600;
+    &:hover{
+      background-color:lighten($blue, 10%);
+    }
+  }
+}
+
+
+
 .userauth {
   width:50%;
   margin:0 auto;
-}
-
-.off-right{
-  right:-1000px;
 }
 
 .spin {
@@ -93,5 +225,9 @@ section{
 }
 
 .flush{
-  right:320px;
+  opacity:0;
+}
+
+.logo {
+  margin-top:14px;
 }

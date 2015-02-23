@@ -15,7 +15,6 @@ class ContactsController < ApplicationController
   end
   def create
     @contact = Contact.new contact_params
-    @contact.ip = request.ip
     if @contact.save
       respond_to do |format|
         format.json {render json: @contact.to_json}
@@ -31,7 +30,7 @@ class ContactsController < ApplicationController
     if @contact.update_attributes contact_params
       respond_to do |format|
         format.json { render json: @contact.to_json }
-      end 
+      end
     else
       respond_to do |format|
         format.json { render json: @contact.errors.full_messages, status: 422 }

@@ -7,18 +7,32 @@
   <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.css">
 </head>
 <body>
+  <div class="background-image"></div>
+
   <!--NAVIGATION MENU-->
   <header class="navigation" role="banner">
     <div class="navigation-wrapper">
       <a href="javascript:void(0)" class="logo">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+        <i class="fa fa-2x fa-users"></i>
       </a>
       <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
       <nav role="navigation">
         <ul id="js-navigation-menu" class="navigation-menu show">
-          <li class="nav-link"><a href="javascript:void(0)">User Auth</a></li>
-          <li class="nav-link"><a href="javascript:void(0)">EMPTY</a></li>
-          <li class="nav-link"><a href="javascript:void(0)">EMPTY</a></li>
+          <li class="nav-link home"><a href="javascript:void(0)">Home</a></li>
+          <li class="nav-link addcontact"><a href="javascript:void(0)">Add</a></li>
+          <li class="nav-link more"><a href="javascript:void(0)">Sort By...</a>
+          <ul class="submenu">
+            <li><a href="javascript:void(0)">Name</a></li>
+            <li><a href="javascript:void(0)">Email</a></li>
+            <li class="more"><a href="javascript:void(0)">Address...</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">City</a></li>
+                <li><a href="javascript:void(0)">State</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
         </ul>
       </nav>
       <div class="navigation-tools">
@@ -30,25 +44,23 @@
             </button>
           </form>
         </div>
-        <a href="javascript:void(0)" class="sign-up">Sign Up</a>
+        <a href="javascript:void(0)" class="sign-up" id="logout">Logout</a>
       </div>
     </div>
   </header>
-
+  <!--END NAVIGATION-->
 
   <div class="app-container">
-    <div class="addcontact">
-      <div class="addcontact-button-wrapper">
-        <a href="#" class="addcontact-but"><i class="fa fa-2x fa-plus"></i></a>
-      </div>
-    </div>
-
+    <!--APP VIEWS GO HERE-->
   </div>
 
   <!--Bower Components-->
   <script src="assets/bower_components/jquery/dist/jquery.js"></script>
   <script src="assets/bower_components/underscore/underscore.js"></script>
   <script src="assets/bower_components/backbone/backbone.js"></script>
+
+  <!--Gets IP Address-->
+  <script src="http://l2.io/ip.js?var=myip"></script>
 
   <!--Models, Collections, Views-->
   <script src="assets/js/templates.js"></script>
